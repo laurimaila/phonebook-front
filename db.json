@@ -1,0 +1,19 @@
+{
+  "persons": [
+    {
+      "name": "Matti Meikäläinen",
+      "number": "040-123456",
+      "id": 7
+    },
+    {
+      "name": "Teijo Terävä",
+      "number": "040-456123",
+      "id": 9
+    },
+    {
+      "name": "Vladimir Putin",
+      "number": "040-123456",
+      "id": 10
+    }
+  ]
+}
