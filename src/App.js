@@ -1,8 +1,9 @@
 import React from 'react'
-import ReactDOM from 'react-dom'
 import Person from './components/Person'
 import Form from './components/Form'
 import axios from 'axios'
+
+const baseUrl = '/api/persons'
 
 class App extends React.Component {
   constructor(props) {
@@ -18,7 +19,7 @@ class App extends React.Component {
 
     return () => {
       if (window.confirm(`Poistetaanko ${name}?`)) {
-        const url = `http://localhost:3001/persons/${id}`
+        const url = `${baseUrl}/${id}`
 
         axios
           .delete(url)
@@ -41,7 +42,7 @@ class App extends React.Component {
     if (this.state.persons.some(e => e.name === this.state.newName)) { alert("Kyseinen nimi on jo lisätty"); }
     else {
       axios
-        .post('http://localhost:3001/persons', personObject)
+        .post(baseUrl, personObject)
         .then(response => {
           this.setState({
             persons: this.state.persons.concat(response.data),
@@ -63,7 +64,7 @@ class App extends React.Component {
   componentDidMount() {
     console.log('did mount')
     axios
-      .get('http://localhost:3001/persons')
+      .get(baseUrl)
       .then(response => {
         console.log('promise fulfilled')
         this.setState({ persons: response.data })
